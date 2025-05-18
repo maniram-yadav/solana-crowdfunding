@@ -5,7 +5,7 @@ use anchor_lang::prelude::*;
 
 
 pub fn init_campaign(
-    ctx: Context<CompaignAccount>,
+    ctx: Context<CampaignAccount>,
     title: String,
     description: String,
     image_url: String,
@@ -28,7 +28,7 @@ pub fn init_campaign(
 
     counter.campaign_count += 1;
 
-    campaign.cid = state.campaign_count;
+    campaign.cid = counter.campaign_count;
     campaign.creator = ctx.accounts.creator.key();
     campaign.title = title;
     campaign.description = description;
@@ -42,8 +42,10 @@ pub fn init_campaign(
 
     Ok(())
 }
+
+
 #[derive(Accounts)]
-pub struct CompaignAccount<'info>{
+pub struct CampaignAccount<'info>{
 
     #[account(mut)]
     pub program_counter:Account<'info,ProgramState>,
@@ -54,14 +56,11 @@ pub struct CompaignAccount<'info>{
     #[account(
         init,
         payer=creator,
-        space=ANCHOR_DISCRIMINATOR_SIZE+Compaign::INIT_SPACE,
-        seed=[
-            b"compaigns",(program_counter.compaign_count+1).to_le_bytes().as_ref()
-        ],
+        space=ANCHOR_DISCRIMINATOR_SIZE+Campaign::INIT_SPACE,
+        seeds=[ b"compaigns",(program_counter.campaign_count+1).to_le_bytes().as_ref()],
         bump
     )]
-    pub compaign:Account<'info,Compaign>,
-
+    pub campaign:Account<'info,Campaign>,
     pub system_program: Program<'info,System>,
     
 }
