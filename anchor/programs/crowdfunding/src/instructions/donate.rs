@@ -3,7 +3,7 @@ use crate::errors::ErrorCode::*;
 use crate::states::{Campaign, Transaction};
 use anchor_lang::prelude::*;
 
-pub fn donate(ctx: Context<DonateCtx>, cid: u64, amount: u64) -> Result<()> {
+pub fn donate(ctx: Context<DonateContext>, cid: u64, amount: u64) -> Result<()> {
    
     let campaign = &mut ctx.accounts.campaign;
     let donor = &mut ctx.accounts.donor;

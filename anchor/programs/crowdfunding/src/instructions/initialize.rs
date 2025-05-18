@@ -5,7 +5,7 @@ use crate::errors::ErrorCode::AlreadyInitialized;
 use crate::states::ProgramState;
 
 pub fn initialize(ctx: Context<InitializeContext>) -> Result<()> {
-    let state = &mut ctx.accounts.program_state;
+    let state = &mut ctx.accounts.program_counter;
     let deployer = &ctx.accounts.deployer;
 
     if state.initialized {

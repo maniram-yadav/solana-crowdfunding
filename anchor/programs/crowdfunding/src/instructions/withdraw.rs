@@ -3,7 +3,7 @@ use crate::errors::ErrorCode::*;
 use crate::states::{Campaign, ProgramState, Transaction};
 use anchor_lang::prelude::*;
 
-pub fn withdraw(ctx: Context<WithdrawCtx>, cid: u64, amount: u64) -> Result<()> {
+pub fn withdraw(ctx: Context<WithdrawContext>, cid: u64, amount: u64) -> Result<()> {
     let campaign = &mut ctx.accounts.campaign;
     let creator = &ctx.accounts.creator;
     let transaction = &mut ctx.accounts.transaction;
@@ -62,7 +62,7 @@ pub fn withdraw(ctx: Context<WithdrawCtx>, cid: u64, amount: u64) -> Result<()> 
 
 #[derive(Accounts)]
 #[instruction(cid: u64)]
-pub struct WithdrawCtx<'info> {
+pub struct WithdrawContext<'info> {
     #[account(
         mut,
         seeds = [

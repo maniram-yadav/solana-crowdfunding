@@ -3,7 +3,7 @@ use crate::states::Campaign;
 use anchor_lang::prelude::*;
 
 pub fn update_campaign(
-    ctx: Context<UpdateCampaignCtx>,
+    ctx: Context<UpdateCampaignContext>,
     cid: u64,
     title: String,
     description: String,
@@ -44,7 +44,7 @@ pub fn update_campaign(
 
 #[derive(Accounts)]
 #[instruction(cid: u64)]
-pub struct UpdateCampaignCtx<'info> {
+pub struct UpdateCampaignContext<'info> {
     #[account(
         mut,
         seeds = [

@@ -2,7 +2,7 @@ use crate::errors::ErrorCode::*;
 use crate::states::Campaign;
 use anchor_lang::prelude::*;
 
-pub fn delete_campaign(ctx: Context<DeleteCampaignCtx>, cid: u64) -> Result<()> {
+pub fn delete_campaign(ctx: Context<DeleteCampaignContext>, cid: u64) -> Result<()> {
     let campaign = &mut ctx.accounts.campaign;
     let creator = &mut ctx.accounts.creator;
 
@@ -27,7 +27,7 @@ pub fn delete_campaign(ctx: Context<DeleteCampaignCtx>, cid: u64) -> Result<()> 
 
 #[derive(Accounts)]
 #[instruction(cid: u64)]
-pub struct DeleteCampaignCtx<'info> {
+pub struct DeleteCampaignContext<'info> {
     #[account(
         mut,
         seeds = [

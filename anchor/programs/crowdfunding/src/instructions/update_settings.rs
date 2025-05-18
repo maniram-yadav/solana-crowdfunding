@@ -3,10 +3,10 @@ use crate::states::ProgramState;
 use anchor_lang::prelude::*;
 
 pub fn update_platform_settings(
-    ctx: Context<UpdatePlatformSettingsCtx>,
+    ctx: Context<UpdateSettingsContext>,
     new_platform_fee: u64,
 ) -> Result<()> {
-    
+
     let state = &mut ctx.accounts.program_state;
     let updater = &ctx.accounts.updater;
 
@@ -24,7 +24,7 @@ pub fn update_platform_settings(
 }
 
 #[derive(Accounts)]
-pub struct UpdatePlatformSettingsCtx<'info> {
+pub struct UpdateSettingsContext<'info> {
     #[account(mut)]
     pub updater: Signer<'info>,
 

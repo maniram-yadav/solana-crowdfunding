@@ -12,8 +12,8 @@ pub fn init_campaign(
     goal: u64,
 ) -> Result<()> {
 
-    let compaign = &mut cts.accounts.compaign;
-    let counter = &mut cts.accounts.program_counter;
+    let campaign = &mut ctx.accounts.campaign;
+    let counter = &mut ctx.accounts.program_counter;
     
     if title.len()>64 {
           return Err(DescriptionTooLong.into());
@@ -53,7 +53,7 @@ pub struct CompaignAccount<'info>{
     
     #[account(
         init,
-        payer=signer,
+        payer=creator,
         space=ANCHOR_DISCRIMINATOR_SIZE+Compaign::INIT_SPACE,
         seed=[
             b"compaigns",(program_counter.compaign_count+1).to_le_bytes().as_ref()
