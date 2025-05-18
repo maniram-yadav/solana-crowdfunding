@@ -5,7 +5,7 @@ use anchor_lang::prelude::*;
 
 
 pub fn init_campaign(
-    ctx: Context<CreateCampaignCtx>,
+    ctx: Context<CompaignAccount>,
     title: String,
     description: String,
     image_url: String,
