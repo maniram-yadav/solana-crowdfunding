@@ -1,12 +1,13 @@
 {
-  "name": "template-next-tailwind-basic",
+  "name": "solana-crowdfunding",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "anchor": "cd anchor && anchor",
     "anchor-build": "cd anchor && anchor build",
+    "anchor-deploy": "cd anchor && anchor deploy",
     "anchor-localnet": "cd anchor && anchor localnet",
-    "anchor-test": "cd anchor && anchor test",
+    "anchor-test": "cd anchor && anchor test --skip-local-validator --skip-deploy",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
