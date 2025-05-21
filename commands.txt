@@ -1,0 +1,32 @@
+cargo init <name> --lib
+cargo add solana-program@1.18.26
+cargo build-sbf
+solana address -k ./target/deploy/<pname>-keypair.json
+cargo add solana-program-test@1.18.26 --dev
+cargo add solana-sdk@1.18.26 --dev
+cargo add tokio --dev
+cargo test-sbf
+solana config set -ul
+solana-test-validator
+solana program deploy ./target/deploy/<pname>.so
+mkdir -p examples
+cargo add solana-client@1.18.26 --dev
+solana address -k ./target/deploy/crowdfunding-keypair.json
+solana-keygen pubkey ./target/deploy/crowdfunding-keypair.json
+anchor upgrade ./target/deploy/crowdfunding.so --program-id A6ZApdxNCbAYJuYMpH7XMQPSc9niw8q759rugPuZ2dnb
+cargo run --example client
+solana-keygen new -o ./target/deploy/<pname>-keypair.json --force
+solana log
+cargo test -- --nocapture
+
+
+
+anchor init  <program-name>
+anchro build
+anchor test
+solana-test-validator
+anchor test --skip-local-validator --skip-deploy
+cargo update -p proc-macro2 --precise 1.0.94
+avm use 0.30.1
+npx create-solana-dapps 
+4QzrpWby4czz9wUpFHXXoD5ahPiUgsAqZQfojz4SxCfc
