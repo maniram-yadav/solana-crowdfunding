@@ -57,7 +57,7 @@ pub struct CampaignAccount<'info>{
         init,
         payer=creator,
         space=ANCHOR_DISCRIMINATOR_SIZE+Campaign::INIT_SPACE,
-        seeds=[ b"compaigns",(program_counter.campaign_count+1).to_le_bytes().as_ref()],
+        seeds=[ b"campaign",(program_counter.campaign_count+1).to_le_bytes().as_ref()],
         bump
     )]
     pub campaign:Account<'info,Campaign>,

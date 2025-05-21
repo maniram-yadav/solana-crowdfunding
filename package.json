@@ -8,6 +8,7 @@
     "anchor-deploy": "cd anchor && anchor deploy",
     "anchor-localnet": "cd anchor && anchor localnet",
     "anchor-test": "cd anchor && anchor test --skip-local-validator --skip-deploy",
+    "tsc": "npx tsx ./anchor/data/gen_user.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
