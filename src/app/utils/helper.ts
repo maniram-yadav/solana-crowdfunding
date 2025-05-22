@@ -1,44 +1,29 @@
-export interface Campaign {
-  publicKey: string
-  cid: number
-  creator: string
-  title: string
-  description: string
-  imageUrl: string
-  goal: number
-  amountRaised: number
-  timestamp: number
-  donors: number
-  withdrawals: number
-  balance: number
-  active: boolean
+export function truncateAddress(address:string) : string {
+  if (!address) {
+    throw new Error('Invalid address')
+  }
+  const truncated = `${address.slice(0,4)}...${address.slice(-4)}`
+  return truncated
 }
 
-export interface Transaction {
-  publicKey: string
-  owner: string
-  cid: number
-  amount: number
-  timestamp: number
-  credited: boolean
+export const getClusterURL = (cluster:string) : string => {
+  const clusterUrls : any = {
+      'mainnet-beta': 'https://api.mainnet-beta.solana.com',
+    testnet: 'https://api.testnet.solana.com',
+    devnet: 'https://api.devnet.solana.com',
+    localhost: 'http://127.0.0.1:8899',
+  }
+  return clusterUrls[cluster]
+
 }
 
-export interface ProgramState {
-  initialized: boolean
-  campaignCount: number
-  platformFee: number
-  platformAddress: string
-}
+export const getCluster = (cluster: string): string => {
+  const clusters: any = {
+    'https://api.mainnet-beta.solana.com': 'mainnet-beta',
+    'https://api.testnet.solana.com': 'testnet',
+    'https://api.devnet.solana.com': 'devnet',
+    'http://127.0.0.1:8899': 'custom',
+  }
 
-export interface GlobalState {
-  campaign: Campaign | null
-  donations: Transaction[]
-  withdrawals: Transaction[]
-  programState: ProgramState | null
-  delModal: string
-  withdrawModal: string
-}
-
-export interface RootState {
-  globalStates: GlobalState
+  return clusters[getClusterURL(cluster)]
 }

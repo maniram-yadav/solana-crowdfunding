@@ -116,7 +116,7 @@ describe("Crowdfunding test cases", () => {
                 creator: myAccount.publicKey,
                 systemProgram: SystemProgram.programId,
             })
-            .signers([myAccount])
+            // .signers([myAccount])
             .rpc()
 
         console.log('Transaction Signature: ', tx)
@@ -159,7 +159,7 @@ describe("Crowdfunding test cases", () => {
         creator: myAccount.publicKey,
         systemProgram: SystemProgram.programId,
       })
-      .signers([myAccount])
+    //   .signers([myAccount])
       .rpc()
 
     console.log('Transaction Signature:', tx)
