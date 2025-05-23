@@ -1,24 +1,22 @@
 import 'dotenv/config'
 import * as anchor from '@coral-xyz/anchor'
-import { Fundus } from '../target/types/fundus'
-import idl from '../target/idl/fundus.json'
+import { Crowdfunding } from '../target/types/crowdfunding'
+import { Program } from "@coral-xyz/anchor";
 import fs from 'fs'
-import { getClusterURL } from '@/utils/helper'
+import { getClusterURL } from './helper'
 const { SystemProgram, PublicKey } = anchor.web3
 
 const main = async (cluster: string) => {
-  // Creates a connection to the cluster
+
   const connection = new anchor.web3.Connection(
     getClusterURL(cluster),
     'confirmed'
   )
 
-  // Load the wallet from the deployer's keypair file
   const keypairPath = `${process.env.HOME}/.config/solana/id.json`
   const keypairData = JSON.parse(fs.readFileSync(keypairPath, 'utf-8'))
   const wallet = anchor.web3.Keypair.fromSecretKey(Uint8Array.from(keypairData))
 
-  // Create a provider
   const provider = new anchor.AnchorProvider(
     connection,
     new anchor.Wallet(wallet),
@@ -29,8 +27,7 @@ const main = async (cluster: string) => {
 
   anchor.setProvider(provider)
 
-  // Load the program
-  const program = new anchor.Program<Fundus>(idl as any, provider)
+  const program = anchor.workspace.Crowdfunding as Program<Crowdfunding>;
   const [programStatePda] = PublicKey.findProgramAddressSync(
     [Buffer.from('program_state')],
     program.programId
@@ -43,7 +40,7 @@ const main = async (cluster: string) => {
     const tx = await program.methods
       .initialize()
       .accountsPartial({
-        programState: programStatePda,
+        programCounter: programStatePda,
         deployer: provider.wallet.publicKey,
         systemProgram: SystemProgram.programId,
       })

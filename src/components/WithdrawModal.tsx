@@ -1,7 +1,3 @@
-export default function WithdrawModal({
-  children,
-}: {
-  children: React.ReactNode
-}) { 
+export default function WithdrawModal() { 
     return <div>Wallet</div>
 }

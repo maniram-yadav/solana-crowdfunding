@@ -1,7 +1,3 @@
-export default function WithdrawlList({
-  children,
-}: {
-  children: React.ReactNode
-}) { 
+export default function WithdrawlList() { 
     return <div>Wallet</div>
 }

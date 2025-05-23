@@ -1,7 +1,3 @@
-export default function Header({
-  children,
-}: {
-  children: React.ReactNode
-}) { 
+export default function Header() { 
     return <div>Wallet</div>
 }

@@ -1,7 +1,3 @@
-export default function AppWalletProvider({
-  children,
-}: {
-  children: React.ReactNode
-}) { 
+export default function CampaignDetails() { 
     return <div>Wallet</div>
 }

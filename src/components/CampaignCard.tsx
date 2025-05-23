@@ -1,7 +1,3 @@
-export default function CampaignCard({
-  children,
-}: {
-  children: React.ReactNode
-}) { 
+export default function CampaignCard() { 
     return <div>Wallet</div>
 }

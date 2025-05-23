@@ -1,7 +1,3 @@
-export default function PlatformSettings({
-  children,
-}: {
-  children: React.ReactNode
-}) { 
+export default function PlatformSettings() { 
     return <div>Wallet</div>
 }

@@ -1,7 +1,3 @@
-export default function DonationList({
-  children,
-}: {
-  children: React.ReactNode
-}) { 
+export default function DonationList() { 
     return <div>Wallet</div>
 }

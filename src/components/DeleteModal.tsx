@@ -1,7 +1,3 @@
-export default function DeleteeModal({
-  children,
-}: {
-  children: React.ReactNode
-}) { 
+export default function DeleteeModal() { 
     return <div>Wallet</div>
 }
