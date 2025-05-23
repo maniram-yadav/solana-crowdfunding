@@ -25,5 +25,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "anchor/crowdfunding/tests/11crowdfunding"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules","anchor"]
 }
